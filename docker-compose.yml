@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  flowiq:
+    build: .
+    container_name: flowiq
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./pipeRoughness.csv:/app/pipeRoughness.csv
+      - ./steamTableRaw.csv:/app/steamTableRaw.csv
+      - ./AtriumLogo.ico:/app/AtriumLogo.ico
+    environment:
+      - GRADIO_SERVER_NAME=0.0.0.0
+    restart: unless-stopped
